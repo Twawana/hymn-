@@ -1,6 +1,6 @@
 [
   {
-     "number": 1,
+    "number": 1,
     "title": "Omukriste nyanyukwa",
     "sectionTitle": "01 Advendi",
     "author": "J.Regnart",
@@ -11,15 +11,36 @@
   
   },
   {
-    "number": 2,
-    "title": "What a Friend We Have in Jesus",
-    "lyrics": ""
+   "number": 2,
+    "title": "Osheelo shomomwenyo mpa",
+    "sectionTitle": "",
+    "author": "",
+    "year": "",
+    "lyrics": "Osheelo shomomwenyo mpa Omuyenda ngo shi tamena.Te ya kungoye nena ndji, Omuwa waKalunga_a zi.Nkee hambelela, nyanyukwa! Egulu lye ku zimina.\nOmukulili na simane, Oshoka ye a toola ndje.\n\nOJesus Kristus ote ya, Ohend’ oyindji e yi na.\n Uyuyuki wo uulenga we. Ha pangele nombili ye.\nHa panga uuvumbu wa gee, Uundjolowele te tu pe.Onkee tu mu hambelelele Ohenda ye nohole ye.\n\nElago aantu ye li na, Ya taamba Jesus, sho e ya,Oyo ya mon’ efudhitho Nombili wo negameno.\nOye li po taa yambekwa. Moondunge taa ka kalekwa.\nOmwenyo gwanje, ngoye wo, U mu tangele ohenda ndjo.\n\nOmwenyo gwoye matula, Ilongekidhila Omuwa.\nKungoye tuu oye te ya Onena ndji nopeha mpa. A hala ku ku nyanyudha Nombili ku ku yambeka, Nkee Jesus tatu mu pandula. Nokutse wo sho te ya mpa.\n\nOJesus Kristus, ila mo Momwenyo gwanḓj’ u kale mo, U lele mo nohenda ndjo Aluhe nomungame wo, Megulu ngoy’ u fale ndje Mutoye, ndi ku imbile. Ond’ uvu ko, wa ti, to ya. Yaloo, Omuwa, nda nyanyukwa!",
+    "attribution": "ONGOWELA:yOshiswedeni 1697\nIITYA:Georg Weissel1623 Omundowishi 1590-1635",
+    "reference": "OMA 2"
   },
   {
-    "number": 3,
-    "title": "Blessed Assurance",
-    "lyrics": "Blessed assurance, Jesus is mine!\nO what a foretaste of glory divine!\nHeir of salvation, purchase of God,\nBorn of His Spirit, washed in His blood.\n\nThis is my story, this is my song,\nPraising my Savior all the day long;\nThis is my story, this is my song,\nPraising my Savior all the day long.\n\nPerfect submission, perfect delight,\nVisions of rapture now burst on my sight;\nAngels, descending, bring from above\nEchoes of mercy, whispers of love."
+    "number": 141,
+    "title": "Ongundu ndjo ya adhima",
+    "sectionTitle": "13 Eelku lyAayapuki",
+    "author": "G. Lewenhaupt",
+    "year": "1862",
+    "notation": "g/M ||:si | |:t |d:d't:M'r:- |:d':- |t:- ||\n:T/d:t/d:r|m'r|d:T|1::d' |t:si |1:- ||",
+    "verses": [
+      "Ongundu ndjo ya adhima, Opii ya zi? lishani wo oye yi na, Oyo aasindani.",
+      "Oonguwo dhawo yedhi na Dha simana. Kalunga e ya zaleka Nuuyelele wa pwa.",
+      "Moongodh' oondhigu ya zi mo, Ayehe mbo. Ya ya, ya vululukwe po, Ya man' ekondjelo.",
+      "Muuyuni mbu sho ya li mo, Oondjendi mbo, Uunkundi nolugodhi wo Oye lu uvu ko.",
+      "Momeho ye n' adhimo Lyuuyelele. Ga yela, ge n' eadhimo, Nando ya lilile.",
+      "Mitenge ye dhi tula po, Ya thikithwa. Oongodhi ye dhi thigi ko, Nodho dha mwenekwa.",
+      "Ongashingey' ya kundukidha Omukulili. Taa imbi nokuligola, Oya naayengeli.",
+      "Enyanyu lyaa n' ehulilo Oye li na. Ya thiki kuHe yawo ngo, Noyo taa fudhithwa."
+    ],
+    "attribution": "ONGOWELA NIITYA: Gustav Lewenhaupt 1862 (1855) Omuswedeni 1791-1873",
+    "reference": "OMA 131"
   },
+ 
   {
     "number": 4,
     "title": "How Great Thou Art",
