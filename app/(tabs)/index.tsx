@@ -8,13 +8,14 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
-  useColorScheme,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
 import hymnsData from "@/assets/data/hymns.json";
 import { Hymn } from "@/types/hymn";
 import { Colors } from "@/constants/theme";
+import { useColorScheme } from "@/hooks/use-color-scheme";
+import { useAppSettings } from '../context/AppProvider';
 
 const hymns = hymnsData as Hymn[];
 
@@ -41,8 +42,9 @@ function filterHymns(query: string, list: Hymn[]): Hymn[] {
 export default function HomeScreen() {
   const [query, setQuery] = useState("");
   const colorScheme = useColorScheme() ?? "light";
-  const colors = Colors[colorScheme];
+  const colors = Colors[colorScheme as keyof typeof Colors];
   const router = useRouter();
+  const { fontScale } = useAppSettings();
 
   const filtered = useMemo(
     () => filterHymns(query, hymns),
@@ -69,20 +71,24 @@ export default function HomeScreen() {
         style={styles.keyboard}
       >
         <View style={[styles.header, { backgroundColor: colors.background }]}>
-          <Text style={[styles.title, { color: colors.text }]}>Hymn Book</Text>
-          <Text style={[styles.subtitle, { color: colors.icon }]}>
+          <Text style={[styles.title, { color: colors.text, fontSize: 28 * fontScale }]}>Hymn Book</Text>
+          <Text style={[styles.subtitle, { color: colors.icon, fontSize: 14 * fontScale }]}>
             Search by number or first words
           </Text>
           <TextInput
             style={[
               styles.searchInput,
               {
-                backgroundColor: colorScheme === "dark" ? "#252525" : "#f0f0f0",
+                backgroundColor:
+                  colorScheme === "dark" || colorScheme === "ocean"
+                    ? "#252525"
+                    : "#f0f0f0",
                 color: colors.text,
                 borderColor: colors.icon + "40",
+                fontSize: 16 * fontScale,
               },
             ]}
-            placeholder="e.g. 1 or Amazing grace..."
+            placeholder="e.g. 1 Omukriste nyanyukwa"
             placeholderTextColor={colors.icon}
             value={query}
             onChangeText={setQuery}
@@ -98,8 +104,8 @@ export default function HomeScreen() {
           contentContainerStyle={styles.listContent}
           ListEmptyComponent={
             <View style={styles.empty}>
-              <Text style={[styles.emptyText, { color: colors.icon }]}>
-                {query.trim() ? "No hymns match your search." : "Type a number or words to search."}
+                <Text style={[styles.emptyText, { color: colors.icon, fontSize: 16 * fontScale }]}> 
+                  {query.trim() ? "No hymns match your search." : "Type a number or words to search."}
               </Text>
             </View>
           }

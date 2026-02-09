@@ -5,19 +5,19 @@ import {
   FlatList,
   StyleSheet,
   TouchableOpacity,
-  useColorScheme,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
 import hymnsData from "@/assets/data/hymns.json";
 import { Hymn } from "@/types/hymn";
 import { Colors } from "@/constants/theme";
+import { useColorScheme } from "@/hooks/use-color-scheme";
 
 const hymns = hymnsData as Hymn[];
 
 export default function BrowseScreen() {
   const colorScheme = useColorScheme() ?? "light";
-  const colors = Colors[colorScheme];
+  const colors = Colors[colorScheme as keyof typeof Colors];
   const router = useRouter();
 
   const renderItem = ({ item }: { item: Hymn }) => (
