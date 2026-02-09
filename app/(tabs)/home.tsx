@@ -170,10 +170,7 @@ export default function Home() {
             
             <TouchableOpacity
               style={[styles.secondaryButton, { borderColor: colors.tint }]}
-              onPress={() => {
-                const route = '/(tabs)/index' as any;
-                router.push(route);
-              }}
+              onPress={() => router.push('/(tabs)')}
             >
               <Text style={[styles.secondaryButtonText, { color: colors.tint }]}>
                 Or search for a specific hymn

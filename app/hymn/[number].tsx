@@ -5,6 +5,8 @@ import hymnsData from "@/assets/data/hymns.json";
 import { Hymn } from "@/types/hymn";
 import { Colors, Fonts } from "@/constants/theme";
 import { useAppSettings } from "../context/AppProvider";
+import { IconSymbol } from '@/components/ui/icon-symbol';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useColorScheme } from "@/hooks/use-color-scheme";
 
 const hymns = hymnsData as Hymn[];
@@ -21,7 +23,7 @@ export default function HymnScreen() {
   const { number: numberParam } = useLocalSearchParams<{ number: string }>();
   const number = numberParam ? parseInt(numberParam, 10) : NaN;
   const router = useRouter();
-  const { fontScale } = useAppSettings();
+  const { fontScale, toggleFavorite, isFavorite } = useAppSettings();
   const colorScheme = useColorScheme() ?? "light";
   const colors = Colors[colorScheme as keyof typeof Colors];
 
@@ -110,16 +112,22 @@ export default function HymnScreen() {
           >
             {hymn.number}
           </Text>
-          {authorYear ? (
-            <Text
-              style={[
-                styles.authorYear,
-                { fontSize: 14 * fontScale, color: PAGE.textMuted },
-              ]}
-            >
-              {authorYear}
-            </Text>
-          ) : null}
+          <View style={{ alignItems: 'flex-end' }}>
+            {authorYear ? (
+              <Text
+                style={[
+                  styles.authorYear,
+                  { fontSize: 14 * fontScale, color: PAGE.textMuted },
+                ]}
+              >
+                {authorYear}
+              </Text>
+            ) : null}
+
+            <TouchableOpacity onPress={() => toggleFavorite(hymn.number)} style={{ marginTop: 8 }}>
+              <IconSymbol name={isFavorite(hymn.number) ? 'heart.fill' : 'heart.fill'} size={26} color={isFavorite(hymn.number) ? '#e0245e' : PAGE.textMuted} />
+            </TouchableOpacity>
+          </View>
         </View>
 
         {/* Optional title line below number */}
