@@ -22,6 +22,45 @@
     "attribution": "ONGOWELA:yOshiswedeni 1697\nIITYA:Georg Weissel1623 Omundowishi 1590-1635",
     "reference": "OMA 2"
   },
+
+  {
+    "number": 134,
+    "title": "Ongundu ndjo ya adhima",
+    "sectionTitle": "13 Eelku lyAayapuki",
+    "author": "G. Lewenhaupt",
+    "year": "1862",
+    "notation": "g/M ||:si | |:t |d:d't:M'r:- |:d':- |t:- ||\n:T/d:t/d:r|m'r|d:T|1::d' |t:si |1:- ||",
+    "verses": [
+      "Muyapuki Kalunga! Omunaenghon' adishe, Tangwa nena, Finemanekwa kovamwoye fyell Muyapuki, u yadi Filonghend' alishe, Katatu-umwe, hatu ku_imbile!",
+      "Muyapuki waalushshe! Ovayapuki yo Tave k' umbile oishani yavo pedu pee! Ve ku finameke, Novaengeli yo Tave ku twil' eengolo, Mukwaalushe.",
+      "Muyapuki wa mana! Nand' oshinge shoye Ofye av'omesho etu e shi holekwa, Ov' auke timbu! Nomohole yoye, Meenghono nomouyuuki owa pwa!",
+      "Muyapuki Kalunga! Shito loy' alishe Tali tumbalek' edina loy' apeshe nee, Muyapuki, Munanghenda , Omunaenghono' adishe! Katatu-umwe, hatu ku imbile!"
+    ],
+    "attribution": "ONGOWELA John Bacchus Dykes 1861 Omwiingilisha 1823-1876\n\nOITYA:Reginald Heber 1826 Omwiingilisha 1783-1826",
+    "reference": "OMA 125"
+  },
+
+   {
+    "number": 141,
+    "title": "Ongundu ndjo ya adhima",
+    "sectionTitle": "13 Eelku lyAayapuki",
+    "author": "G. Lewenhaupt",
+    "year": "1862",
+    "notation": "g/M ||:si | |:t |d:d't:M'r:- |:d':- |t:- ||\n:T/d:t/d:r|m'r|d:T|1::d' |t:si |1:- ||",
+    "verses": [
+      "Ongundu ndjo ya adhima, Opii ya zi? lishani wo oye yi na, Oyo aasindani.",
+      "Oonguwo dhawo yedhi na Dha simana. Kalunga e ya zaleka Nuuyelele wa pwa.",
+      "Moongodh' oondhigu ya zi mo, Ayehe mbo. Ya ya, ya vululukwe po, Ya man' ekondjelo.",
+      "Muuyuni mbu sho ya li mo, Oondjendi mbo, Uunkundi nolugodhi wo Oye lu uvu ko.",
+      "Momeho ye n' adhimo Lyuuyelele. Ga yela, ge n' eadhimo, Nando ya lilile.",
+      "Mitenge ye dhi tula po, Ya thikithwa. Oongodhi ye dhi thigi ko, Nodho dha mwenekwa.",
+      "Ongashingey' ya kundukidha Omukulili. Taa imbi nokuligola, Oya naayengeli.",
+      "Enyanyu lyaa n' ehulilo Oye li na. Ya thiki kuHe yawo ngo, Noyo taa fudhithwa."
+    ],
+    "attribution": "ONGOWELA NIITYA: Gustav Lewenhaupt 1862 (1855) Omuswedeni 1791-1873",
+    "reference": "OMA 131"
+  },
+
   {
     "number": 170,
     "title": "Tate Megulu",
@@ -42,26 +81,7 @@
     "attribution": "ONGOWELA: oyapEmbilO Jaakpetrus Tritonius (Treibenreif) 1507\nOmuaustralia 1475-1524?\nIITYA: Jaakko Suomalainen,lwopo 1583 Omusoomi 1540-1588",
     "reference": "OMA 656"
   },
-  {
-    "number": 3,
-    "title": "Ongundu ndjo ya adhima",
-    "sectionTitle": "13 Eelku lyAayapuki",
-    "author": "G. Lewenhaupt",
-    "year": "1862",
-    "notation": "g/M ||:si | |:t |d:d't:M'r:- |:d':- |t:- ||\n:T/d:t/d:r|m'r|d:T|1::d' |t:si |1:- ||",
-    "verses": [
-      "Ongundu ndjo ya adhima, Opii ya zi? lishani wo oye yi na, Oyo aasindani.",
-      "Oonguwo dhawo yedhi na Dha simana. Kalunga e ya zaleka Nuuyelele wa pwa.",
-      "Moongodh' oondhigu ya zi mo, Ayehe mbo. Ya ya, ya vululukwe po, Ya man' ekondjelo.",
-      "Muuyuni mbu sho ya li mo, Oondjendi mbo, Uunkundi nolugodhi wo Oye lu uvu ko.",
-      "Momeho ye n' adhimo Lyuuyelele. Ga yela, ge n' eadhimo, Nando ya lilile.",
-      "Mitenge ye dhi tula po, Ya thikithwa. Oongodhi ye dhi thigi ko, Nodho dha mwenekwa.",
-      "Ongashingey' ya kundukidha Omukulili. Taa imbi nokuligola, Oya naayengeli.",
-      "Enyanyu lyaa n' ehulilo Oye li na. Ya thiki kuHe yawo ngo, Noyo taa fudhithwa."
-    ],
-    "attribution": "ONGOWELA NIITYA: Gustav Lewenhaupt 1862 (1855) Omuswedeni 1791-1873",
-    "reference": "OMA 131"
-  },
+  
  
   {
     "number": 4,
@@ -97,25 +117,6 @@
     "number": 10,
     "title": "Nearer My God to Thee",
     "lyrics": "Nearer, my God, to Thee, nearer to Thee!\nE'en though it be a cross that raiseth me,\nStill all my song shall be, nearer, my God, to Thee.\n\nThough like the wanderer, the sun gone down,\nDarkness be over me, my rest a stone;\nYet in my dreams I'd be nearer, my God, to Thee.\n\nThere let the way appear, steps unto heaven;\nAll that Thou sendest me, in mercy given;\nAngels to beckon me nearer, my God, to Thee."
-  },
-  {
-    "number": 141,
-    "title": "Ongundu ndjo ya adhima",
-    "sectionTitle": "13 Eelku lyAayapuki",
-    "author": "G. Lewenhaupt",
-    "year": "1862",
-    "notation": "g/M ||:si | |:t |d:d't:M'r:- |:d':- |t:- ||\n:T/d:t/d:r|m'r|d:T|1::d' |t:si |1:- ||",
-    "verses": [
-      "Ongundu ndjo ya adhima, Opii ya zi? lishani wo oye yi na, Oyo aasindani.",
-      "Oonguwo dhawo yedhi na Dha simana. Kalunga e ya zaleka Nuuyelele wa pwa.",
-      "Moongodh' oondhigu ya zi mo, Ayehe mbo. Ya ya, ya vululukwe po, Ya man' ekondjelo.",
-      "Muuyuni mbu sho ya li mo, Oondjendi mbo, Uunkundi nolugodhi wo Oye lu uvu ko.",
-      "Momeho ye n' adhimo Lyuuyelele. Ga yela, ge n' eadhimo, Nando ya lilile.",
-      "Mitenge ye dhi tula po, Ya thikithwa. Oongodhi ye dhi thigi ko, Nodho dha mwenekwa.",
-      "Ongashingey' ya kundukidha Omukulili. Taa imbi nokuligola, Oya naayengeli.",
-      "Enyanyu lyaa n' ehulilo Oye li na. Ya thiki kuHe yawo ngo, Noyo taa fudhithwa."
-    ],
-    "attribution": "ONGOWELA NIITYA: Gustav Lewenhaupt 1862 (1855) Omuswedeni 1791-1873",
-    "reference": "OMA 131"
   }
+ 
 ]
