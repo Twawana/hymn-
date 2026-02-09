@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
   View,
   Text,
@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import hymnsData from "@/assets/data/hymns.json";
 import { Hymn } from "@/types/hymn";
 import { Colors } from "@/constants/theme";
@@ -18,6 +19,12 @@ import { useColorScheme } from "@/hooks/use-color-scheme";
 import { useAppSettings } from '../context/AppProvider';
 
 const hymns = hymnsData as Hymn[];
+
+type StoredUser = {
+  username: string;
+  phone: string;
+  password: string;
+};
 
 function filterHymns(query: string, list: Hymn[]): Hymn[] {
   const q = query.trim().toLowerCase();
@@ -41,15 +48,324 @@ function filterHymns(query: string, list: Hymn[]): Hymn[] {
 
 export default function HomeScreen() {
   const [query, setQuery] = useState("");
+  const [authMode, setAuthMode] = useState<"login" | "register">("register");
+  const [username, setUsername] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+  const [identifier, setIdentifier] = useState(""); // username or phone when logging in
+  const [error, setError] = useState<string | null>(null);
+  const [message, setMessage] = useState<string | null>(null);
+  const [loggedInUser, setLoggedInUser] = useState<StoredUser | null>(null);
   const colorScheme = useColorScheme() ?? "light";
   const colors = Colors[colorScheme as keyof typeof Colors];
   const router = useRouter();
   const { fontScale } = useAppSettings();
 
-  const filtered = useMemo(
-    () => filterHymns(query, hymns),
-    [query]
-  );
+  useEffect(() => {
+    const loadUser = async () => {
+      try {
+        const raw = await AsyncStorage.getItem("hymnbook_user");
+        if (!raw) return;
+        const parsed = JSON.parse(raw) as StoredUser;
+        setLoggedInUser(parsed);
+      } catch {
+        // ignore
+      }
+    };
+
+    loadUser();
+  }, []);
+
+  const handleRegister = async () => {
+    setError(null);
+    setMessage(null);
+
+    if (!username.trim() || !phone.trim() || !password.trim()) {
+      setError("Please fill in username, phone number and password.");
+      return;
+    }
+
+    if (phone.trim().length < 7) {
+      setError("Please enter a valid phone number.");
+      return;
+    }
+
+    const newUser: StoredUser = {
+      username: username.trim(),
+      phone: phone.trim(),
+      password: password.trim(),
+    };
+
+    try {
+      await AsyncStorage.setItem("hymnbook_user", JSON.stringify(newUser));
+      setLoggedInUser(newUser);
+      setMessage("Account created. You are now logged in.");
+      setPassword("");
+    } catch {
+      setError("Could not save your account. Please try again.");
+    }
+  };
+
+  const handleLogin = async () => {
+    setError(null);
+    setMessage(null);
+
+    if (!identifier.trim() || !password.trim()) {
+      setError("Please enter your username or phone number and password.");
+      return;
+    }
+
+    try {
+      const raw = await AsyncStorage.getItem("hymnbook_user");
+      if (!raw) {
+        setError("No account found. Please register first.");
+        return;
+      }
+      const stored = JSON.parse(raw) as StoredUser;
+      const id = identifier.trim();
+      const matchesId = stored.username === id || stored.phone === id;
+      const matchesPassword = stored.password === password.trim();
+
+      if (!matchesId || !matchesPassword) {
+        setError("Incorrect details. Please check and try again.");
+        return;
+      }
+
+      setLoggedInUser(stored);
+      setMessage("Logged in successfully.");
+      setPassword("");
+      setIdentifier("");
+    } catch {
+      setError("Could not log you in. Please try again.");
+    }
+  };
+
+  const handleLogout = () => {
+    setLoggedInUser(null);
+    setPassword("");
+    setIdentifier("");
+    setMessage(null);
+  };
+
+  const filtered = useMemo(() => filterHymns(query, hymns), [query]);
+
+  // If not logged in, show auth screen (register / login)
+  if (!loggedInUser) {
+    return (
+      <SafeAreaView
+        style={[styles.container, { backgroundColor: colors.background }]}
+        edges={["top"]}
+      >
+        <KeyboardAvoidingView
+          behavior={Platform.OS === "ios" ? "padding" : undefined}
+          style={styles.keyboard}
+        >
+          <View style={[styles.header, { backgroundColor: colors.background }]}>
+            <Text
+              style={[
+                styles.title,
+                { color: colors.text, fontSize: 28 * fontScale },
+              ]}
+            >
+              {authMode === "register" ? "Create Account" : "Welcome Back"}
+            </Text>
+            <Text
+              style={[
+                styles.subtitle,
+                { color: colors.icon, fontSize: 14 * fontScale },
+              ]}
+            >
+              {authMode === "register"
+                ? "Register with username, phone number and password."
+                : "Log in with your username or phone number and password."}
+            </Text>
+
+            <View style={styles.authToggleRow}>
+              <TouchableOpacity
+                style={[
+                  styles.authToggleButton,
+                  authMode === "register" && {
+                    backgroundColor: colors.tint,
+                  },
+                ]}
+                onPress={() => {
+                  setAuthMode("register");
+                  setError(null);
+                  setMessage(null);
+                }}
+              >
+                <Text
+                  style={[
+                    styles.authToggleText,
+                    {
+                      color:
+                        authMode === "register" ? "#fff" : colors.text,
+                    },
+                  ]}
+                >
+                  Register
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[
+                  styles.authToggleButton,
+                  authMode === "login" && {
+                    backgroundColor: colors.tint,
+                  },
+                ]}
+                onPress={() => {
+                  setAuthMode("login");
+                  setError(null);
+                  setMessage(null);
+                }}
+              >
+                <Text
+                  style={[
+                    styles.authToggleText,
+                    {
+                      color: authMode === "login" ? "#fff" : colors.text,
+                    },
+                  ]}
+                >
+                  Login
+                </Text>
+              </TouchableOpacity>
+            </View>
+
+            {error && (
+              <Text style={[styles.errorText, { color: "red" }]}>{error}</Text>
+            )}
+            {message && (
+              <Text
+                style={[styles.messageText, { color: colors.tint }]}
+              >
+                {message}
+              </Text>
+            )}
+
+            {authMode === "register" ? (
+              <>
+                <TextInput
+                  style={[
+                    styles.input,
+                    {
+                      backgroundColor:
+                        colorScheme === "dark" || colorScheme === "ocean"
+                          ? "#252525"
+                          : "#f0f0f0",
+                      color: colors.text,
+                      borderColor: colors.icon + "40",
+                      fontSize: 16 * fontScale,
+                    },
+                  ]}
+                  placeholder="Username"
+                  placeholderTextColor={colors.icon}
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  value={username}
+                  onChangeText={setUsername}
+                />
+                <TextInput
+                  style={[
+                    styles.input,
+                    {
+                      backgroundColor:
+                        colorScheme === "dark" || colorScheme === "ocean"
+                          ? "#252525"
+                          : "#f0f0f0",
+                      color: colors.text,
+                      borderColor: colors.icon + "40",
+                      fontSize: 16 * fontScale,
+                    },
+                  ]}
+                  placeholder="Phone number"
+                  placeholderTextColor={colors.icon}
+                  keyboardType="phone-pad"
+                  value={phone}
+                  onChangeText={setPhone}
+                />
+                <TextInput
+                  style={[
+                    styles.input,
+                    {
+                      backgroundColor:
+                        colorScheme === "dark" || colorScheme === "ocean"
+                          ? "#252525"
+                          : "#f0f0f0",
+                      color: colors.text,
+                      borderColor: colors.icon + "40",
+                      fontSize: 16 * fontScale,
+                    },
+                  ]}
+                  placeholder="Password"
+                  placeholderTextColor={colors.icon}
+                  secureTextEntry
+                  value={password}
+                  onChangeText={setPassword}
+                />
+                <TouchableOpacity
+                  style={[styles.primaryButton, { backgroundColor: colors.tint }]}
+                  onPress={handleRegister}
+                  activeOpacity={0.8}
+                >
+                  <Text style={styles.primaryButtonText}>Register</Text>
+                </TouchableOpacity>
+              </>
+            ) : (
+              <>
+                <TextInput
+                  style={[
+                    styles.input,
+                    {
+                      backgroundColor:
+                        colorScheme === "dark" || colorScheme === "ocean"
+                          ? "#252525"
+                          : "#f0f0f0",
+                      color: colors.text,
+                      borderColor: colors.icon + "40",
+                      fontSize: 16 * fontScale,
+                    },
+                  ]}
+                  placeholder="Username or phone number"
+                  placeholderTextColor={colors.icon}
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  value={identifier}
+                  onChangeText={setIdentifier}
+                />
+                <TextInput
+                  style={[
+                    styles.input,
+                    {
+                      backgroundColor:
+                        colorScheme === "dark" || colorScheme === "ocean"
+                          ? "#252525"
+                          : "#f0f0f0",
+                      color: colors.text,
+                      borderColor: colors.icon + "40",
+                      fontSize: 16 * fontScale,
+                    },
+                  ]}
+                  placeholder="Password"
+                  placeholderTextColor={colors.icon}
+                  secureTextEntry
+                  value={password}
+                  onChangeText={setPassword}
+                />
+                <TouchableOpacity
+                  style={[styles.primaryButton, { backgroundColor: colors.tint }]}
+                  onPress={handleLogin}
+                  activeOpacity={0.8}
+                >
+                  <Text style={styles.primaryButtonText}>Login</Text>
+                </TouchableOpacity>
+              </>
+            )}
+          </View>
+        </KeyboardAvoidingView>
+      </SafeAreaView>
+    );
+  }
 
   const renderItem = ({ item }: { item: Hymn }) => (
     <TouchableOpacity
@@ -71,7 +387,19 @@ export default function HomeScreen() {
         style={styles.keyboard}
       >
         <View style={[styles.header, { backgroundColor: colors.background }]}>
-          <Text style={[styles.title, { color: colors.text, fontSize: 28 * fontScale }]}>Hymn Book</Text>
+          <View style={styles.headerRow}>
+            <View>
+              <Text style={[styles.title, { color: colors.text, fontSize: 28 * fontScale }]}>Hymn Book</Text>
+              {loggedInUser && (
+                <Text style={[styles.subtitle, { color: colors.icon, fontSize: 12 * fontScale }]}>
+                  Logged in as {loggedInUser.username}
+                </Text>
+              )}
+            </View>
+            <TouchableOpacity onPress={handleLogout} activeOpacity={0.7}>
+              <Text style={[styles.logoutText, { color: colors.tint }]}>Logout</Text>
+            </TouchableOpacity>
+          </View>
           <Text style={[styles.subtitle, { color: colors.icon, fontSize: 14 * fontScale }]}>
             Search by number or first words
           </Text>
@@ -118,6 +446,57 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  authToggleRow: {
+    flexDirection: "row",
+    gap: 8,
+    marginBottom: 12,
+  },
+  authToggleButton: {
+    flex: 1,
+    paddingVertical: 10,
+    borderRadius: 10,
+    alignItems: "center",
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: "#ccc",
+  },
+  authToggleText: {
+    fontWeight: "600",
+  },
+  input: {
+    height: 48,
+    borderRadius: 12,
+    paddingHorizontal: 16,
+    fontSize: 16,
+    borderWidth: 1,
+    marginTop: 10,
+  },
+  primaryButton: {
+    marginTop: 16,
+    paddingVertical: 12,
+    borderRadius: 12,
+    alignItems: "center",
+  },
+  primaryButtonText: {
+    color: "#fff",
+    fontWeight: "700",
+    fontSize: 16,
+  },
+  errorText: {
+    marginTop: 8,
+    marginBottom: 4,
+  },
+  messageText: {
+    marginTop: 4,
+    marginBottom: 4,
+  },
+  headerRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  logoutText: {
+    fontWeight: "600",
   },
   keyboard: {
     flex: 1,
