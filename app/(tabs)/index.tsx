@@ -85,14 +85,16 @@ export default function HomeScreen() {
       return;
     }
 
-    if (phone.trim().length < 7) {
-      setError("Please enter a valid phone number.");
+    const rawPhone = phone.trim();
+    const phonePattern = /^(081|085)\d{7}$/;
+    if (!phonePattern.test(rawPhone)) {
+      setError("Phone number must be 10 digits and start with 081 or 085.");
       return;
     }
 
     const newUser: StoredUser = {
       username: username.trim(),
-      phone: phone.trim(),
+      phone: rawPhone,
       password: password.trim(),
     };
 
@@ -282,7 +284,12 @@ export default function HomeScreen() {
                   placeholderTextColor={colors.icon}
                   keyboardType="phone-pad"
                   value={phone}
-                  onChangeText={setPhone}
+                  maxLength={10}
+                  onChangeText={(value) => {
+                    // allow only digits, limit to 10
+                    const digitsOnly = value.replace(/[^0-9]/g, "").slice(0, 10);
+                    setPhone(digitsOnly);
+                  }}
                 />
                 <TextInput
                   style={[
