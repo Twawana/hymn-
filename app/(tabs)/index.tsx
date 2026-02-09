@@ -1,98 +1,167 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import React, { useMemo, useState } from "react";
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform,
+  useColorScheme,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { useRouter } from "expo-router";
+import hymnsData from "@/assets/data/hymns.json";
+import { Hymn } from "@/types/hymn";
+import { Colors } from "@/constants/theme";
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+const hymns = hymnsData as Hymn[];
+
+function filterHymns(query: string, list: Hymn[]): Hymn[] {
+  const q = query.trim().toLowerCase();
+  if (!q) return list;
+
+  const asNumber = parseInt(q, 10);
+  if (!Number.isNaN(asNumber)) {
+    return list.filter(
+      (h) => h.number === asNumber || h.number.toString().startsWith(q)
+    );
+  }
+
+  return list.filter((h) => {
+    const titleMatch = h.title.toLowerCase().includes(q);
+    const lyricsMatch = h.lyrics && h.lyrics.toLowerCase().includes(q);
+    const versesMatch =
+      h.verses && h.verses.some((v) => v.toLowerCase().includes(q));
+    return titleMatch || lyricsMatch || versesMatch;
+  });
+}
 
 export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+  const [query, setQuery] = useState("");
+  const colorScheme = useColorScheme() ?? "light";
+  const colors = Colors[colorScheme];
+  const router = useRouter();
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+  const filtered = useMemo(
+    () => filterHymns(query, hymns),
+    [query]
+  );
+
+  const renderItem = ({ item }: { item: Hymn }) => (
+    <TouchableOpacity
+      style={[styles.item, { borderBottomColor: colors.icon + "30" }]}
+      onPress={() => router.push(`/hymn/${item.number}`)}
+      activeOpacity={0.7}
+    >
+      <Text style={[styles.itemNumber, { color: colors.tint }]}>{item.number}</Text>
+      <Text style={[styles.itemTitle, { color: colors.text }]} numberOfLines={1}>
+        {item.title}
+      </Text>
+    </TouchableOpacity>
+  );
+
+  return (
+    <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]} edges={["top"]}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : undefined}
+        style={styles.keyboard}
+      >
+        <View style={[styles.header, { backgroundColor: colors.background }]}>
+          <Text style={[styles.title, { color: colors.text }]}>Hymn Book</Text>
+          <Text style={[styles.subtitle, { color: colors.icon }]}>
+            Search by number or first words
+          </Text>
+          <TextInput
+            style={[
+              styles.searchInput,
+              {
+                backgroundColor: colorScheme === "dark" ? "#252525" : "#f0f0f0",
+                color: colors.text,
+                borderColor: colors.icon + "40",
+              },
+            ]}
+            placeholder="e.g. 1 or Amazing grace..."
+            placeholderTextColor={colors.icon}
+            value={query}
+            onChangeText={setQuery}
+            returnKeyType="search"
+            autoCorrect={false}
+            autoCapitalize="none"
+          />
+        </View>
+        <FlatList
+          data={filtered}
+          keyExtractor={(item) => item.number.toString()}
+          renderItem={renderItem}
+          contentContainerStyle={styles.listContent}
+          ListEmptyComponent={
+            <View style={styles.empty}>
+              <Text style={[styles.emptyText, { color: colors.icon }]}>
+                {query.trim() ? "No hymns match your search." : "Type a number or words to search."}
+              </Text>
+            </View>
+          }
+        />
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  container: {
+    flex: 1,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  keyboard: {
+    flex: 1,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  header: {
+    paddingHorizontal: 20,
+    paddingTop: 8,
+    paddingBottom: 16,
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: "700",
+    marginBottom: 4,
+  },
+  subtitle: {
+    fontSize: 14,
+    marginBottom: 12,
+  },
+  searchInput: {
+    height: 48,
+    borderRadius: 12,
+    paddingHorizontal: 16,
+    fontSize: 16,
+    borderWidth: 1,
+  },
+  listContent: {
+    paddingHorizontal: 20,
+    paddingBottom: 24,
+  },
+  item: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 14,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    gap: 12,
+  },
+  itemNumber: {
+    fontSize: 18,
+    fontWeight: "700",
+    minWidth: 32,
+  },
+  itemTitle: {
+    flex: 1,
+    fontSize: 17,
+  },
+  empty: {
+    paddingVertical: 48,
+    alignItems: "center",
+  },
+  emptyText: {
+    fontSize: 16,
   },
 });
