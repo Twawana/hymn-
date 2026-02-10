@@ -23,6 +23,48 @@
     "reference": "OMA 2"
   },
 
+   {
+    "number": 3,
+    "title": "Hosianna Jesus Kristus",
+    "sectionTitle": "",
+    "author": "G. J. Vogler Iwopo ",
+    "year": "1795",
+    "notation": "g/M ||:si | |:t |d:d't:M'r:- |:d':- |t:- ||\n:T/d:t/d:r|m'r|d:T|1::d' |t:si |1:- ||",
+    "verses": [
+      "Hosianna mokombanda, Hosianna, Hosianna, Omuna gwaDavid oonguka, Te ya medhina ly’Omuwa! Hosianna mokombanda, Hosianna, Hosianna, OmunagwaDavid oonguka, Te ya medhina ly’Omuwa! Hosianna mokombanda, Hosianna, Hosianna, OmunagwaDavid oonguka, Te ya medhina ly’Omuwa! Hosianna Jesus Kristus, Na hambelelwe ngu, Omuna gwaDavid oonguka, Te ya medhina ly’Omuwa! Hosianna Jesus Kristus, Na hambelelwe ngu, Omuna gwa- David oonguka, Te ya medhina ly’Omuwa! Hosianna mokombanda, Hosianna, Hosianna, OmunagwaDavid oonguka, Te ya medhina ly’Omuwa! Hosianna mokombanda, Hosianna, Hosianna, Omuna gwaDavid oonguka, Te ya medhina ly’Omuwa!"
+    ],
+    "attribution": "ONGOWELA: Georg Joseph Vogler Iwopo – 1795Omundo-wishi 1749–1814 \nIITYA: Mat 21:9; Eps 118:25–26",
+    "reference": ""
+  },
+
+  {
+    "number": 4,
+    "title": "Omunene gwomuSioni",
+    "sectionTitle": "",
+    "author": "H. Klemetti",
+    "year": " 1905",
+    "notation": "g/M ||:si | |:t |d:d't:M'r:- |:d':- |t:- ||\n:T/d:t/d:r|m'r|d:T|1::d' |t:si |1:- ||",
+    "verses": [
+      "Omunene gwomuSioni, GwaDavid, ngov’ omuyapuki, Esilohenda u li na, Oonkondo dhoye dhi tu pa.",
+      "Ombili twe yi yuulukwa, Neifupipiko ndyo lya pwa. Tu shitulula, tu ku fe, Ombep’ Ondjapuki u tu pe.",
+      "Hosianna tatu ligola Noku ku taamba putse mpa, GwaDavid, Mukwathi, u tu pe Ehipitho, Omuholike."
+    ],
+    "attribution": "ONGOWELA: Heikki Klemetti 1905 Omusoomi 1876–1953\nIITYA: Kaarlo Aukusti Terhi (Hammar) 1898",
+    "reference": "OMA 4"
+  },
+
+  {
+   "number": 5,
+    "title": "Omuwa nge te ya",
+    "sectionTitle": "",
+    "author": "",
+    "year": "",
+    "notation":"e / l:d:r:m:-:l / l:l:s:l l:-:- / D:r:m:f:-:m\n/ r:-:d t,:-:- / T:d:t l:l:-:r / r:-:d l:r:-:- / T,",
+    "lyrics": "Omuwa nge te ya, te tu talaleke, Esiku lyenyanyu oondyoka.Elaka etoye okwe li tu pe, Oohapu twe dh’ uvu oondhoka:Omuyalek’ e ya! Ngoye penduka po! Ka teme onyeka,u matuke ko. Omuyalekwa ngoye wa kotha.\n\nEthimbo efupi olyo nolya pu, Uusiku mbu uule wa hiti.Kegulu eluwa lya tendele tuu, Etango lyaaluhe lya piti.Omuyalek’ e ya! Ngoye penduka po! Ka teme onyeka,u matuke ko. Omuyalekwa ngoye wa kotha.\n\nEe, Jesus, Omuwa, otwa hala, u ye, Onale otse twe ku hala.Nkee thikama mbala, u endelele. Nenyanyu otatu ku tala.Omuyalek’ e ya! Ngoye penduka po! Ka teme onyeka,u matuke ko. Omuyalekwa ngoye wa kotha.\n\nYaloo, Omuwa, owa hala okuya Kaamwoye nombili onene.Oonkondo dhasatan’ u yone po mpa, Ongoye awike u lele.Yaloo, iyaloo, twe ku ligolele. Yaloo, iyaloo,twe ku hambelele U ile omuyalekwa gwoye.",
+    "attribution": "ONGOWELA NIITYA: Joel Blomqvist 1878 Omusweden 1840–1930",
+    "reference": "OMA 5"
+  },
+
   {
     "number": 134,
     "title": "Ongundu ndjo ya adhima",
