@@ -2,6 +2,7 @@ import hymnsData from "@/assets/data/hymns.json";
 import { Colors } from "@/constants/theme";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 import { Hymn } from "@/types/hymn";
+import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
@@ -13,6 +14,7 @@ import {
     View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useAppSettings } from "../context/AppProvider";
 
 const hymns = hymnsData as Hymn[];
 
@@ -21,6 +23,7 @@ export default function BrowseScreen() {
   const colorScheme = useColorScheme() ?? "light";
   const colors = Colors[colorScheme as keyof typeof Colors];
   const router = useRouter();
+  const { addToPlaylist, removeFromPlaylist, isInPlaylist } = useAppSettings();
 
   // Get filtered hymns based on search
   let filteredHymns: Hymn[] = [];
@@ -101,6 +104,15 @@ export default function BrowseScreen() {
         <Text style={[styles.itemTitle, { color: colors.text }]} numberOfLines={1}>
           {item.title}
         </Text>
+        <TouchableOpacity
+          style={styles.playlistButton}
+          onPress={() => {
+            if (isInPlaylist(item.number)) removeFromPlaylist(item.number);
+            else addToPlaylist(item.number);
+          }}
+        >
+          <Ionicons name={isInPlaylist(item.number) ? 'checkmark' : 'add'} size={20} color={colors.tint} />
+        </TouchableOpacity>
       </TouchableOpacity>
     );
   }
@@ -153,6 +165,13 @@ const styles = StyleSheet.create({
   itemTitle: {
     flex: 1,
     fontSize: 17,
+  },
+  playlistButton: {
+    paddingHorizontal: 8,
+    paddingVertical: 6,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   notFoundContainer: {
     flex: 1,

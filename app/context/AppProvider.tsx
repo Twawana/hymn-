@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useMemo, useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
 type UserData = {
   username: string;
@@ -19,6 +19,11 @@ type AppContextType = {
   favorites: number[];
   toggleFavorite: (num: number) => void;
   isFavorite: (num: number) => boolean;
+  playlist: number[];
+  addToPlaylist: (num: number) => void;
+  removeFromPlaylist: (num: number) => void;
+  clearPlaylist: () => void;
+  isInPlaylist: (num: number) => boolean;
   isLoading: boolean;
 };
 
@@ -30,12 +35,14 @@ const USERS_KEY = 'appUsers';
 const CURRENT_USER_KEY = 'currentUser';
 const FONT_SCALE_PREFIX = 'fontScale_';
 const FAVORITES_PREFIX = 'favorites_';
+const PLAYLIST_PREFIX = 'playlist_';
 
 export function AppProvider({ children }: { children: React.ReactNode }) {
   const [fontScale, setFontScaleState] = useState<number>(1);
   const [theme, setThemeState] = useState<AppTheme>('system');
   const [user, setUser] = useState<UserData | null>(null);
   const [favorites, setFavorites] = useState<number[]>([]);
+  const [playlist, setPlaylist] = useState<number[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   // Load saved settings and current user on app start
@@ -54,10 +61,11 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         if (storedCurrent) {
           const parsed = JSON.parse(storedCurrent) as UserData;
           setUser(parsed);
-          // load per-user fontScale and favorites
-          const [userFont, userFavs] = await Promise.all([
+          // load per-user fontScale, favorites and playlist
+          const [userFont, userFavs, userPlaylist] = await Promise.all([
             AsyncStorage.getItem(FONT_SCALE_PREFIX + parsed.username),
             AsyncStorage.getItem(FAVORITES_PREFIX + parsed.username),
+            AsyncStorage.getItem(PLAYLIST_PREFIX + parsed.username),
           ]);
           if (userFont) setFontScaleState(parseFloat(userFont));
           if (userFavs) {
@@ -66,6 +74,13 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
               setFavorites(favs);
             } catch {
               setFavorites([]);
+            }
+          }
+          if (userPlaylist) {
+            try {
+              setPlaylist(JSON.parse(userPlaylist));
+            } catch {
+              setPlaylist([]);
             }
           }
         } else {
@@ -169,7 +184,30 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     });
   };
 
+  const addToPlaylist = (num: number) => {
+    setPlaylist((prev) => {
+      if (prev.includes(num)) return prev;
+      const next = [...prev, num];
+      if (user) AsyncStorage.setItem(PLAYLIST_PREFIX + user.username, JSON.stringify(next)).catch((err) => console.error('Failed to save playlist:', err));
+      return next;
+    });
+  };
+
+  const removeFromPlaylist = (num: number) => {
+    setPlaylist((prev) => {
+      const next = prev.filter((n) => n !== num);
+      if (user) AsyncStorage.setItem(PLAYLIST_PREFIX + user.username, JSON.stringify(next)).catch((err) => console.error('Failed to save playlist:', err));
+      return next;
+    });
+  };
+
+  const clearPlaylist = () => {
+    setPlaylist([]);
+    if (user) AsyncStorage.setItem(PLAYLIST_PREFIX + user.username, JSON.stringify([])).catch((err) => console.error('Failed to clear playlist:', err));
+  };
+
   const isFavorite = (num: number) => favorites.includes(num);
+  const isInPlaylist = (num: number) => playlist.includes(num);
 
   const value = useMemo(
     () => ({
@@ -183,9 +221,14 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       favorites,
       toggleFavorite,
       isFavorite,
+      playlist,
+      addToPlaylist,
+      removeFromPlaylist,
+      clearPlaylist,
+      isInPlaylist,
       isLoading,
     }),
-    [fontScale, theme, user, favorites, isLoading]
+    [fontScale, theme, user, favorites, playlist, isLoading]
   );
 
   if (isLoading) return null;

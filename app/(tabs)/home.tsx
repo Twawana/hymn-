@@ -1,12 +1,13 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView, Dimensions } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { useRouter } from 'expo-router';
+import hymnsData from '@/assets/data/hymns.json';
 import { Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
-import { useAppSettings } from '../context/AppProvider';
 import { Ionicons } from '@expo/vector-icons';
-import Animated, { FadeInUp, FadeIn } from 'react-native-reanimated';
+import { useRouter } from 'expo-router';
+import React from 'react';
+import { Dimensions, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import Animated, { FadeIn, FadeInUp } from 'react-native-reanimated';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useAppSettings } from '../context/AppProvider';
 
 const { width } = Dimensions.get('window');
 
@@ -15,14 +16,10 @@ export default function Home() {
   const colorScheme = useColorScheme() ?? 'light';
   const colors = Colors[colorScheme];
   const { fontScale } = useAppSettings();
+  const { playlist, removeFromPlaylist, clearPlaylist } = useAppSettings();
+  const hymns = hymnsData as any[];
 
-  const features = [
-    { icon: 'book-outline', title: '300+ Hymns', description: 'Traditional and contemporary' },
-    { icon: 'search-outline', title: 'Easy Search', description: 'Find hymns quickly' },
-    { icon: 'heart-outline', title: 'Favorites', description: 'Save your preferred hymns' },
-    { icon: 'musical-notes-outline', title: 'Audio Available', description: 'Listen to melodies' },
-  ];
-
+  
   const quickActions = [
     { title: 'Popular Hymns', icon: 'trending-up', route: '/(tabs)/explore?filter=popular' },
     { title: 'Recent Views', icon: 'time', route: '/(tabs)/explore?filter=recent' },
@@ -70,60 +67,7 @@ export default function Home() {
               A sacred space for worship through hymns and spiritual songs.
             </Text>
           </Animated.View>
-
-          {/* Stats Card */}
-          <Animated.View 
-            entering={FadeInUp.duration(800).delay(200)}
-            style={[styles.statsCard, { backgroundColor: colorScheme === 'dark' || colorScheme === 'ocean' ? '#1F2937' : '#F9FAFB', shadowColor: colors.text }]}
-          >
-            <View style={styles.statsRow}>
-              <View style={styles.statItem}>
-                <Text style={[styles.statNumber, { color: colors.tint }]}>300+</Text>
-                <Text style={[styles.statLabel, { color: colors.icon }]}>Hymns</Text>
-              </View>
-              <View style={styles.statDivider} />
-              <View style={styles.statItem}>
-                <Text style={[styles.statNumber, { color: colors.tint }]}>50+</Text>
-                <Text style={[styles.statLabel, { color: colors.icon }]}>Categories</Text>
-              </View>
-              <View style={styles.statDivider} />
-              <View style={styles.statItem}>
-                <Text style={[styles.statNumber, { color: colors.tint }]}>∞</Text>
-                <Text style={[styles.statLabel, { color: colors.icon }]}>Inspiration</Text>
-              </View>
-            </View>
-          </Animated.View>
-
-          {/* Features Grid */}
-          <Animated.View 
-            entering={FadeInUp.duration(800).delay(400)}
-            style={styles.featuresContainer}
-          >
-            <Text style={[styles.sectionTitle, { color: colors.text, fontSize: 22 * fontScale }]}>
-              Features
-            </Text>
-            <View style={styles.featuresGrid}>
-              {features.map((feature, index) => (
-                <View 
-                  key={index}
-                  style={[styles.featureCard, { backgroundColor: colorScheme === 'dark' || colorScheme === 'ocean' ? '#1F2937' : '#F9FAFB' }]}
-                >
-                  <Ionicons 
-                    name={feature.icon as any} 
-                    size={28} 
-                    color={colors.tint} 
-                    style={styles.featureIcon}
-                  />
-                  <Text style={[styles.featureTitle, { color: colors.text }]}>
-                    {feature.title}
-                  </Text>
-                  <Text style={[styles.featureDesc, { color: colors.icon }]}>
-                    {feature.description}
-                  </Text>
-                </View>
-              ))}
-            </View>
-          </Animated.View>
+          
 
           {/* Quick Actions */}
           <Animated.View 
@@ -151,6 +95,48 @@ export default function Home() {
                 </TouchableOpacity>
               ))}
             </View>
+          </Animated.View>
+
+          {/* Today's Playlist */}
+          <Animated.View
+            entering={FadeInUp.duration(800).delay(900)}
+            style={styles.playlistContainer}
+          >
+            <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+              <Text style={[styles.sectionTitle, { color: colors.text, fontSize: 22 * fontScale }]}>Today's PlayList</Text>
+              <View style={{flexDirection: 'row', gap: 8}}>
+                <TouchableOpacity onPress={() => router.push('/(tabs)/explore')}>
+                  <Text style={[styles.actionText, { color: colors.tint }]}>Add songs</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={clearPlaylist}>
+                  <Ionicons name="trash" size={20} color={colors.icon} />
+                </TouchableOpacity>
+              </View>
+            </View>
+
+            {playlist.length === 0 ? (
+              <Text style={[{ color: colors.icon, marginTop: 8 }]}>No songs for today — add some from the hymn book.</Text>
+            ) : (
+              <View style={{ marginTop: 8, gap: 8 }}>
+                {playlist.map((num) => {
+                  const h = hymns.find((x) => x.number === num);
+                  return (
+                    <TouchableOpacity
+                      key={num}
+                      style={[styles.playlistItem, { backgroundColor: colorScheme === 'dark' || colorScheme === 'ocean' ? '#111827' : '#FFF' }]}
+                      activeOpacity={0.8}
+                      onPress={() => router.push(`/hymn/${num}`)}
+                    >
+                      <Text style={{ color: colors.tint, fontWeight: '700', minWidth: 36 }}>{num}</Text>
+                      <Text style={{ color: colors.text, flex: 1 }}>{h ? h.title : 'Unknown hymn'}</Text>
+                      <TouchableOpacity onPress={() => removeFromPlaylist(num)}>
+                        <Ionicons name="close" size={18} color={colors.icon} />
+                      </TouchableOpacity>
+                    </TouchableOpacity>
+                  );
+                })}
+              </View>
+            )}
           </Animated.View>
 
           {/* Main CTA */}
@@ -357,5 +343,18 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     textAlign: 'center',
     opacity: 0.7,
+  },
+  playlistContainer: {
+    gap: 8,
+    padding: 12,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: 'rgba(0,0,0,0.06)'
+  },
+  playlistItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 10,
+    borderRadius: 10,
   },
 });

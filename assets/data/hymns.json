@@ -83,21 +83,197 @@
   },
 
   {
-    "number": 134,
-    "title": "Ongundu ndjo ya adhima",
-    "sectionTitle": "13 Eelku lyAayapuki",
-    "author": "G. Lewenhaupt",
-    "year": "1862",
+    "number": 7,
+    "title": "Omuwa, owa tegelelwa",
+    "sectionTitle": "",
+    "author": "yOshisoomi",
+    "year": " ",
     "notation": "g/M ||:si | |:t |d:d't:M'r:- |:d':- |t:- ||\n:T/d:t/d:r|m'r|d:T|1::d' |t:si |1:- ||",
     "verses": [
-      "Muyapuki Kalunga! Omunaenghon' adishe, Tangwa nena, Finemanekwa kovamwoye fyell Muyapuki, u yadi Filonghend' alishe, Katatu-umwe, hatu ku_imbile!",
-      "Muyapuki waalushshe! Ovayapuki yo Tave k' umbile oishani yavo pedu pee! Ve ku finameke, Novaengeli yo Tave ku twil' eengolo, Mukwaalushe.",
-      "Muyapuki wa mana! Nand' oshinge shoye Ofye av'omesho etu e shi holekwa, Ov' auke timbu! Nomohole yoye, Meenghono nomouyuuki owa pwa!",
-      "Muyapuki Kalunga! Shito loy' alishe Tali tumbalek' edina loy' apeshe nee, Muyapuki, Munanghenda , Omunaenghono' adishe! Katatu-umwe, hatu ku imbile!"
+      "Omuwa, owa tegelelwa Kegongalo ndi lyoye. Muuyuni mbu wa yonana Tamu keme aantu yoye. Uunake ngaa uudhighu mbu Nelilagano tali pu? U ye po, Omuwa Jesus.",
+      "Omutimahend’ aluhe tuu To kala paantu yoye. Ngoy’u ya na muudhighu mbu, U ya p’ ekwatho lyoye. Natango twe ku yuulukwa, Twa hala, tu ku mone mpa, U ye po, Omuwa Jesus.",
+      "Aatondi yoy’ taa ulula Shaa siku oomwenyo dhetu, Oshoka taa ku sheke mpa Onay’ mokati ketu. Ongoy’Omuwa wa simana. Oonkondo dhoye holola. U ye po, Omuwa Jesus.",
+      "Neindilo ndi twe ya mpa, Pungoye, Omuwa gwetu: NOmbepo yoye temitha Eitaalonyeka lyetu. Muusiku nge mwa ndunduma: “Omuyaleki oongu te ya!” Tu kale tu n’omukumo.",
+      "Muuyuni mu twa yuulukwa, Pungoye notwa hala. Mahodhi tatu lili mpa, Kuuzilo tatu tala, Eluwa lye tu pendutha, Nkee tu li twa tegamena, U ye po, Omuwa Jesus!"
     ],
-    "attribution": "ONGOWELA John Bacchus Dykes 1861 Omwiingilisha 1823-1876\n\nOITYA:Reginald Heber 1826 Omwiingilisha 1783-1826",
-    "reference": "OMA 125"
+    "attribution": "ONGOWELA: yOshisoomi\nIITYA: Dora Rappard 1875 Omuswisi 1842-1923",
+    "reference": "OMA 7"
   },
+
+  {
+    "number": 8,
+    "title": "Ndi tsakaneke ngiini",
+    "sectionTitle": "",
+    "author": "M. Teschner ",
+    "year": "1615",
+    "notation": "g/M ||:si | |:t |d:d't:M'r:- |:d':- |t:- ||\n:T/d:t/d:r|m'r|d:T|1::d' |t:si |1:- ||",
+    "verses": [
+      "Ndi tsakaneke ngiini Ongoye, Nakuya? Enyanyu enene ngiini Uuyuni we u pa! OJesus Kristus mwene, Oondunge yelitha, Nangame ndi ku kunde Pamukalo ngo gwa tsa.",
+      "MuSion we ya nale, Wa li gwesimano. Wa yalelwa iiyale Mpoka wa ende po. Osho nangame nguka Otii ku pandula Neimbilo tuu ndika Lyesimaneko mpa.",
+      "Wa gwanitha ayihe Nopeha lyandje wo. Nda manguluka ihe Meti lyekaneno. Kanda li ndi n’ ombili, Nenyanyu ndaa li na. Ongoye w’ eta shili Shoka nda yuulukwa.",
+      "Osho ohole yoye Onene u yi na. Omwenyo gwoye mwene Wa gandj’ iikulila. Osheelo shomegulu Owe egulula, Muupika mbu uulu Sho we tu hupitha.",
+      "Einekelo lyetu MuJesus li li mo. E ya moomwenyo dhetu. Muumbanda twa zi mo, Mbo we tu limbIike Nowe tu thindile Mehepeko alihe Moka twa kalele.",
+      "Kepangulo nge te ya Oye naayengeli, Kungame wo ote ya Oye omupanguli. Ta pangula aadhini, Ta pe ndj’ ehupitho. Naamboka yomahodhi Te ya p’ efudhitho."
+    ],
+    "attribution": "ONGOWELA: Melchior Teschner 1615 Omundowishi 1584-1635\nIITYA: Paul Gerhardt 1653 Omundowishi 1606-1676",
+    "reference": "OMA 8"
+  },
+
+  {
+    "number": 9,
+    "title": "Aakriste, nyanyukweni",
+    "sectionTitle": "A",
+    "author": "yOshindowishi ",
+    "year": "lwopo-1500",
+    "notation": "g/M ||:si | |:t |d:d't:M'r:- |:d':- |t:- ||\n:T/d:t/d:r|m'r|d:T|1::d' |t:si |1:- ||",
+    "verses": [
+      "Aakriste, nyanyukweni Kesilohenda ndi! OJesus mu imbileni, Megulu sho kwa zi. Okwa f’ onzigona, Ndee oye tuu a sindi Ondeveli, omuhindi Nokwe tu hupitha.",
+      "Ngu Omuwa ita kongo Epangelo lyaampa. Epangelo lyiilongo Kalunga kwe li mu pa. Okwe l’ idhilike Kombanda yevi ndika, Kwa kala kwa f’ omupika Osigo eso lye.",
+      "Mu mu simaneke ano, Ne mbo mwa simana. Ote mu p’ omagano Esimano lya pwa. Ih’ omwiikongeli Gwesimaneko nkuka, Ta dhini Omuwa nguka, Megulu ita yi.",
+      "Oohepele mwa toka, Naambo mu tondike, Nomulongi wo shaa ngoka, Oongu k’ iuvite, Imbeni amuhe, Mu ha hambelele Omuwa, Oongu e ya kukwatha. Ote mu popile.",
+      "Ye Jesus te ya mbala Mesimaneko lye. Oshili kwe mu hala, mu nyanyudhwe kuye. Ilongekidheni, Mu ye, mu mu tsakaneke, Ne mu ke mu simaneke. Oku li popepi."
+    ],
+    "attribution": "",
+    "reference": "OMA 3"
+  },
+
+
+  {
+    "number": 9,
+    "title": "Ongundu ndjo ya adhima",
+    "sectionTitle": "B",
+    "author": "yOshindowishi",
+    "year": " 1598",
+    "notation": "g/M ||:si | |:t |d:d't:M'r:- |:d':- |t:- ||\n:T/d:t/d:r|m'r|d:T|1::d' |t:si |1:- ||",
+    "verses": [
+      "Vakwetu, pendukeni! Ohamba oye uya, Nehafo tambuleni Omweend’a kumwifa. Vakriste, ileni, Tu tange ou a mana, Tu imbe Hosianna, Tu mu fimanekeni!",
+      "Omutima ove, wa ponga, Ohamba oye uya. Omaudjuu nand’a honga, Omukwafi ku ku na. Tal’ ouwa, ou tu na Omoshivilo shaye Neshashonghenda laye Neendjovo tu di na.",
+      "Omulili, Hamba yoye Oye ku ehena, Omunyengwi_onyofi yoye Oye ku pitila. Tu kuwilileni Omuhekeleki wetu Nomukufimefyo wetu! Okwe tu hangeni.",
+      "Omulunde, pwilikina, Omwene ku ku shi. Nghee ila, ino mu dina. U ye kOmuxupifi! Moulunde woye dja, U kong’ ekwafo laye Nefilonghenda laye, Ote ku tambula.",
+      "Omwene, we tu hanga, Fye av’ eehepele, We uya u kuf’ onyanga. Mowii tu xupifwe. Ohai ku imbile alushe Hossiana, Shaashi nda li nda kana. We uya u konge nge."
+
+    ],
+    "attribution": "ONGOWELA: yOshindowishi 1598\nOITYA: Michael Schirmer 1640 Omundowishi 1606-1673",
+    "reference": "OMA 11"
+  },
+
+   {
+    "number": 10,
+    "title": "Tala, Kristus ote uya",
+    "sectionTitle": "",
+    "author": "J. Ulich ",
+    "year": "1674",
+    "notation": "g/M ||:si | |:t |d:d't:M'r:- |:d':- |t:- ||\n:T/d:t/d:r|m'r|d:T|1::d' |t:si |1:- ||",
+    "verses": [
+      "Tala, Kristus ote uya, Hamba yoye, mwenyo wange, Tya: onde ku yeulula, Ila mwaame, Hamba yange, Omunhu woy’ onghenda fya, Onde ku liyandjela.",
+      "Ila ou wa dala nge Oneshashonghenda loye, Ila hekeleke nge Nevangelimbili loye. Ove mwene oto uya, Hamba yange, ou wa tya.",
+      "Ila, Kristus, komba mo Meni lange, ta m’ oulunde. Shitwe yoye eta mo, Ei ya nyonwa mo koulunde. Ila, shitulule nge Onohonde yoye nee.",
+      "Ila, tu p’ ouvalelo, Fye tu mon’ eenghono doye, U tu pe eyombamo, Fye tu end’ ondjila yoye. Ila Jesus, nangala Mwenyo wange, pangela.",
+      "Ila, etelele nge Mupopili, Omhepo yoye, Shili yoye i honge nge Nokushiiv’ ehalo loye, Nopo pefyo yo ndi tye: Ila, Mwene Jesus, nee!"
+
+    ],
+    "attribution": "ONGOWELA: Johann Ulich 1674 Omundowishi 1634-1712\nOITYA: Philipp Friedrich Hiller 1762 Omundowishi 1699-1769",
+    "reference": "OMA 9"
+  },
+
+  {
+    "number": 11,
+    "title": "Lilongekidileni Kushakeneka",
+    "sectionTitle": "",
+    "author": "yOshindowishi",
+    "year": "lwopo-1500 ",
+    "notation": "g/M ||:si | |:t |d:d't:M'r:- |:d':- |t:- ||\n:T/d:t/d:r|m'r|d:T|1::d' |t:si |1:- ||",
+    "verses": [
+      "Lilongekidileni Kushakeneka nee Omwene, Shime sheni, Ta di pombada pee. Kalunga_ouyelele Wounyuni, Muladi shili, Omukwafi, Mweetimbili Kufye eehepele.",
+      "Omweenda munene woye Ondjila mu palela, Noivelo, onhu yoye, i mu yeululila. Malila yukifa, A shiive yoo okweenda E uy’ e yad’ onghenda Oku ku xupifa.",
+      "Omutima wa wa poshi Kuye wa halika. Ounhwa noukolokoshi, Wa dja kusatana, Ohe u nyanyala. Omwene ota fiki Mwaau_omulixupipiki Nokwe mu liyandjela.",
+      "Omwene, Hamba yange, Nda hala ndi ku pe Omutim’ aushe wange, Ou, u u nangale. Nefiku hai ka fya Meulu tambule nge, Konghenda xupife nge, Nohai ku pandula."
+  
+    ],
+    "attribution": "ONGOWELA: yOshindowishi 1598\nOITYA: Valentin Thilo 1642 Omundowishi 1607-1662",
+    "reference": "OMA 10"
+  },
+
+  {
+    "number": 12,
+    "title": "Jesus omukwafi wange",
+    "sectionTitle": "",
+    "author": "M. Techner ",
+    "year": "1615",
+    "notation": " $| s:s | s:s | l:- | s:- | :S | d':s | d':m' | r'$\n$:d' | r':- | s:- | :S | d':s | l:m | f.m:r | d:- DC |",
+    "verses": [
+      "Jesus omukwafi wange, Ye te uya shili. A hala okupa nge Onghenda nombili. Ame eshi nda kana, Oye a konga nge, A hala ndi mu mone Mohole yaye nee.",
+      "Ove wa fimanekwa Vo ve ku imbila. Na ame yo nda hala Oku ku tangela. Kwafe nge ondi pewe omutima wa yela, Ndi kale ndi ku hole Moku ku kalela.",
+      "Ame nda li nda mangwa, Wa mangulula nge; Ame nda li nda shekwa, Wa fimaneka nge. Wa hala ondi ninge omuholike woye Na ove yo u ninge Omukulili wange.",
+      "Eshi wa dja keulu, Wa li u hole nge. Wa djuulukwa nge nale, Wa hala u kwafe nge. Etimba lange alushe Wa humbatela nge. Ouyuuki woy' aushe, Wa hala u pe nge.",
+      "Jesus ove omukwafi, Kwafe nge alushe. Jesus ove omuyuuki nda hala ndi ku fe, Ndi long' oilonga yeye Ndi ku fimaneke, Ndi kale mondjila yoye, Ndi ku hambelele.",
+      "Osho ame nda hala, Ngeenge to aluka, Ndi shiive okuhafa, Ha oku ku tila, Meulu loy' ndi kale KOshipala shoye, Osho ndi ku imbile Alushelushe nee."
+
+    ],
+    "attribution": "ONGOWELA: Melchior Techner 1615 Omundowishi 1584-1635\nOITYA: oya dja mOmukanda wOmaimbulilo 32 (1929)",
+    "reference": ""
+  },
+
+  {
+    "number": 13,
+    "title": "Kwa li uusiku omuuyuni",
+    "sectionTitle": "02 Okrismesa",
+    "author": "P. Nicolai ",
+    "year": "1599",
+    "notation": "g/M ||:si | |:t |d:d't:M'r:- |:d':- |t:- ||\n:T/d:t/d:r|m'r|d:T|1::d' |t:si |1:- ||",
+    "verses": [
+      "Kwa li uusiku omuuyuni, Ayeheyehe yomuuyuni Ya puka noya loloka. Omuwa a ti: Ngay’ nda hala Uuyelele nau ze ko mbala. Nuuyelele wa holoka. Twa mon’ uuyelele Tau minikilile Mevi ndika. Tu nyanyukwe, Tu imbile Kalunga komuuyelele.",
+      "Jesus Kristus oye nguka Kwe ya uuyelele tuu mbuka, Uusiku nowa hulu po. Jesus a ti: Ndi n’ ombili, Ongam’ uuyelele washili. Ongay’ ondjila, mwenyo wo. Otse atuheni, Tu mu simanekeni, Tse tu tseye Ehalo lye, Tu mu landule, Tu ende tu n’ uuyelele.",
+      "Jesus, twe ya mpa pungoye Onena ndji, esiku lyoye, Notatu ku p’ epandulo, Sho we ya wa ningi omuntu, Wa sindil’ omutondi gwetu Nowe tu mangulula mo. Kalunga Tate wo, U taamb’ esimano, Shoka ngoye Owe tu pe Uuyelele MOmumwoye ngu omuholike."
+
+    ],
+    "attribution": "ONGOWELA: Philipp Nicolai 1599 Omundowishi 1556-1608\nOIITYA: Karl August Döring 1821 Omundowishi 1783-1844",
+    "reference": "OMA 12"
+  },
+
+  {
+    "number": 14,
+    "title": "Megulu mwa z' omuyengeli",
+    "sectionTitle": "B",
+    "author": "",
+    "year": " ",
+    "notation": "g/M ||:si | |:t |d:d't:M'r:- |:d':- |t:- ||\n:T/d:t/d:r|m'r|d:T|1::d' |t:si |1:- ||",
+    "verses": [
+      "Megulu mwa z' omuyengel, A kulukile kevi ndi. Aasita sho ye mu mono ko, Oy' adhika kehaluko.",
+      "Omuyengeli ok’ uvitha: Inamu tila nand’ osha. Ayehe taa ka nyanyudhwa Kelaka tamu uvu mpa.",
+      "OKristus, Omuwa gwetu ngu, A valelwa muuyuni mbu Metemba lyaa n’ esimano Nane wo tamu mu adha mo.",
+      "Omwenyo gwandje, uluma, Ngu u tale mpo a langekwa; Epona lyaKalunga ngo Ye Omuwa gwoye, Kristus wo.",
+      "U kundwe, sho we ya po mpa! Omunandjo ino mu unzila. Omuyamba, we tu hepele, Nkee otse tu ku pandule.",
+      "Omuwa gwegulu nevi wo, Wa thigi po eadhimo. Owe ya nowa kala mo Molupe lwaa n’ esimano.",
+      "Komwiidhi owa lalele Nonzapo we tu thigile: Uuyamba wevi tse tu na, Pungoye itau kwatha sha.",
+      "Mungame, Jesus, ila wo, Momwenyo gwandje kala mo. Muudhighu nomeyemato Aluhe koleka ndje wo.",
+      "Enyanyu lyandje, ngoy’ Omuwa, Ando ndi kale ndi ku na. Kohenda yoye kwatha ndje, Nangame ndi ku pandule",
+      "Kalunga tatu mu imbile, Sho kwe tu pe Epona lye. Naakwiita yomegulu wo Yo taye mu pe esimano!"
+
+    ],
+    "attribution": "ONGOWELA b: olupe lwOshisoomi lweimbilo lyaJohann Eccard 1597 Omundowishi 1553-1611\nOIITYA: Martin Luther 1539 Omundowishi 1483-1546",
+    "reference": "OMA 13"
+  },
+
+  {
+    "number": 10,
+    "title": "",
+    "sectionTitle": "",
+    "author": "",
+    "year": " ",
+    "notation": "g/M ||:si | |:t |d:d't:M'r:- |:d':- |t:- ||\n:T/d:t/d:r|m'r|d:T|1::d' |t:si |1:- ||",
+    "verses": [
+      "",
+      "",
+      "",
+      "",
+      ""
+
+    ],
+    "attribution": "",
+    "reference": ""
+  },
+
 
    {
     "number": 141,
